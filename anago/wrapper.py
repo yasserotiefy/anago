@@ -61,10 +61,10 @@ class Sequence(object):
             shuffle: Boolean (whether to shuffle the training data
                 before each epoch). `shuffle` will default to True.
         """
-		print("shape X_train ", x_train.shape)
-		print("x_train ", x_train)
-		print("shape y_train ",y_train.shape)
-		print("y_train " ,y_train)
+	print("shape X_train ", x_train.shape)
+	print("x_train ", x_train)
+	print("shape y_train ",y_train.shape)
+	print("y_train " ,y_train)
         p = IndexTransformer(initial_vocab=self.initial_vocab, use_char=self.use_char)
         p.fit(x_train, y_train)
         embeddings = filter_embeddings(self.embeddings, p._word_vocab.vocab, self.word_embedding_dim)
