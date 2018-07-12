@@ -36,9 +36,10 @@ class Trainer(object):
             shuffle: Boolean (whether to shuffle the training data
                 before each epoch). `shuffle` will default to True.
         """
-
+        print("X_train.shape", x_train.shape)
+        print("Y_train.shape", y_train.shape)
         train_seq = NERSequence(x_train, y_train, batch_size, self._preprocessor.transform)
-
+        print("train_seq ",train_seq)
         if x_valid and y_valid:
             valid_seq = NERSequence(x_valid, y_valid, batch_size, self._preprocessor.transform)
             f1 = F1score(valid_seq, preprocessor=self._preprocessor)
