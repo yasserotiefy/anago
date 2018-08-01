@@ -119,6 +119,7 @@ class Tagger(object):
             }
         """
         pred = self.predict_proba(text)
+        print("predection ", pred)
         tags = self._get_tags(pred)
         prob = self._get_prob(pred)
         res = self._build_response(text, tags, prob)
