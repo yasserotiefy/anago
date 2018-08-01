@@ -37,7 +37,9 @@ class Tagger(object):
         words = self.tokenizer(text)
         X = self.preprocessor.transform([words])
         y = self.model.predict(X)
+        print(y)
         y = y[0]  # reduce batch dimension.
+        print(y)
 
         return y
 
@@ -64,8 +66,6 @@ class Tagger(object):
 
         for chunk_type, chunk_start, chunk_end in chunks:
             chunk_end += 1
-            print(prob[chunk_start: chunk_end])
-            print(np.float(np.average(prob[chunk_start: chunk_end])))
             entity = {
                 'text': ' '.join(words[chunk_start: chunk_end]),
                 'type': chunk_type,
@@ -119,7 +119,6 @@ class Tagger(object):
             }
         """
         pred = self.predict_proba(text)
-        print("predection ", pred)
         tags = self._get_tags(pred)
         prob = self._get_prob(pred)
         res = self._build_response(text, tags, prob)
