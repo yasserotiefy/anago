@@ -37,10 +37,8 @@ class Tagger(object):
         words = self.tokenizer(text)
         X = self.preprocessor.transform([words])
         y = self.model.predict(X)
-        print(y)
         y = y[0]  # reduce batch dimension.
-        print(y)
-
+    
         return y
 
     def _get_prob(self, pred):
