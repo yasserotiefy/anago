@@ -64,6 +64,8 @@ class Tagger(object):
 
         for chunk_type, chunk_start, chunk_end in chunks:
             chunk_end += 1
+            print(prob[chunk_start: chunk_end])
+            print(np.float(np.average(prob[chunk_start: chunk_end])))
             entity = {
                 'text': ' '.join(words[chunk_start: chunk_end]),
                 'type': chunk_type,
